@@ -21,13 +21,13 @@ const ArticleContent: React.FC<ArticleContentProps> = ({ data, thumbnail }) => {
           onClick={() => {
             window.open(formatImageLink(thumbnail), "_blank");
           }}
-          className="h-auto max-h-[200px] w-full cursor-pointer object-cover object-center transition-transform duration-700 hover:scale-[1.02] md:max-h-[400px]"
+          className="h-auto max-h-[200px] w-full cursor-pointer object-cover object-center transition-transform duration-700 hover:scale-[1.02] md:max-h-[450px]"
           alt={data.fields.title}
           itemProp="image"
           priority
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
         />
-        <div className="absolute inset-0 rounded-xl ring-1 ring-inset ring-black/10 dark:ring-white/10" />
+        {/* <div className="absolute inset-0 rounded-xl ring-1 ring-inset ring-black/10 dark:ring-white/10" /> */}
       </div>
 
       {/* Article Content */}

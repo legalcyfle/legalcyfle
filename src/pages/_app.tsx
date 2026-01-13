@@ -14,6 +14,7 @@ import {
   italiana,
   croissantOne,
   abrilFatface,
+  googleSans,
 } from "@/lib/fonts";
 import { ChevronUp } from "lucide-react";
 import type { AppProps } from "next/app";
@@ -55,7 +56,7 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <Navbar />
       <main
-        className={`${GeistSans.variable} ${GeistMono.variable} ${playfair.variable} ${abrilFatface.variable} font-lora`}
+        className={`${GeistSans.variable} ${GeistMono.variable} ${playfair.variable} ${abrilFatface.variable} ${googleSans.variable} font-google`}
       >
         <Component {...pageProps} />
       </main>

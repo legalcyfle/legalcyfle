@@ -7,6 +7,7 @@ import {
   Abril_Fatface,
   Work_Sans,
 } from "next/font/google";
+import localFont from "next/font/local";
 
 export const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 export const playfair = Playfair_Display({
@@ -37,5 +38,31 @@ export const workSans = Work_Sans({
   weight: ["400", "500", "600", "700"],
 });
 
+export const googleSans = localFont({
+  src: [
+    {
+      path: "../../public/assets/google-sans/GoogleSans-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/assets/google-sans/GoogleSans-Medium.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../public/assets/google-sans/GoogleSans-SemiBold.ttf",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../../public/assets/google-sans/GoogleSans-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-google-sans",
+});
+
 // usuage
-// className={`${inter.variable} ${playfair.variable} ${lora.variable} font-sans`}
+// className={`${inter.variable} ${playfair.variable} ${lora.variable} ${googleSans.variable} font-sans`}
