@@ -28,9 +28,34 @@ const components: Components = {
       {children}
     </h4>
   ),
-  p: ({ children }) => (
-    <p className="mb-3 text-stone-700 dark:text-stone-300">{children}</p>
-  ),
+  p: ({ children }) => {
+    // Check if the paragraph contains the AD_BLOCK placeholder
+    const childText = String(children);
+    if (childText.includes("[[AD_BLOCK]]")) {
+      return (
+        <div
+          className="my-2 flex justify-center overflow-hidden"
+          dangerouslySetInnerHTML={{
+            __html: `
+              <ins class="adsbygoogle"
+                style="display:block; text-align:center; min-width: 250px;"
+                data-ad-layout="in-article"
+                data-ad-format="fluid"
+                data-ad-client="ca-pub-5892936530350741"
+                data-ad-slot="5536160107">
+              </ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            `,
+          }}
+        />
+      );
+    }
+    return (
+      <p className="mb-3 text-stone-700 dark:text-stone-300">{children}</p>
+    );
+  },
   ul: ({ children }) => (
     <ul className="mb-4 list-inside list-disc space-y-2 text-stone-700 dark:text-stone-300">
       {children}
