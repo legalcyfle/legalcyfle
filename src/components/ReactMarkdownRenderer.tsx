@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import type { Components } from "react-markdown";
@@ -6,6 +7,38 @@ interface MarkdownRendererProps {
   content: string;
   className?: string;
 }
+
+// Ad Block Component
+const AdBlock = () => {
+  useEffect(() => {
+    if (typeof window !== "undefined" && (window as any).adsbygoogle) {
+      try {
+        ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
+          {},
+        );
+      } catch (err) {
+        console.error("AdSense error:", err);
+      }
+    }
+  }, []);
+
+  return (
+    <div className="my-2 flex justify-center overflow-hidden">
+      <ins
+        className="adsbygoogle"
+        style={{
+          display: "block",
+          textAlign: "center",
+          minWidth: "250px",
+        }}
+        data-ad-layout="in-article"
+        data-ad-format="fluid"
+        data-ad-client="ca-pub-5892936530350741"
+        data-ad-slot="5536160107"
+      />
+    </div>
+  );
+};
 
 const components: Components = {
   h1: ({ children }) => (
@@ -32,25 +65,7 @@ const components: Components = {
     // Check if the paragraph contains the AD_BLOCK placeholder
     const childText = String(children);
     if (childText.includes("[[AD_BLOCK]]")) {
-      return (
-        <div
-          className="my-2 flex justify-center overflow-hidden"
-          dangerouslySetInnerHTML={{
-            __html: `
-              <ins class="adsbygoogle"
-                style="display:block; text-align:center; min-width: 250px;"
-                data-ad-layout="in-article"
-                data-ad-format="fluid"
-                data-ad-client="ca-pub-5892936530350741"
-                data-ad-slot="5536160107">
-              </ins>
-              <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-              </script>
-            `,
-          }}
-        />
-      );
+      return <AdBlock />;
     }
     return (
       <p className="mb-3 text-stone-700 dark:text-stone-300">{children}</p>
@@ -67,25 +82,7 @@ const components: Components = {
     </ol>
   ),
   li: ({ children }) => <li className="ml-2">{children}</li>,
-  blockquote: () => (
-    <div
-      className="my-2 flex justify-center overflow-hidden"
-      dangerouslySetInnerHTML={{
-        __html: `
-          <ins class="adsbygoogle"
-            style="display:block; text-align:center; min-width: 250px;"
-            data-ad-layout="in-article"
-            data-ad-format="fluid"
-            data-ad-client="ca-pub-5892936530350741"
-            data-ad-slot="5536160107">
-          </ins>
-          <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-        `,
-      }}
-    />
-  ),
+  blockquote: () => <AdBlock />,
   code: ({ children, ...rest }) => {
     const inline = "inline" in rest && rest.inline;
     return inline ? (
