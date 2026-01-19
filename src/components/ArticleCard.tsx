@@ -11,7 +11,13 @@ import { Badge } from "./ui/badge";
 // tz
 import tz from "dayjs/plugin/timezone";
 import utc from "dayjs/plugin/utc";
-import { abrilFatface, italiana, playfair, workSans } from "@/lib/fonts";
+import {
+  abrilFatface,
+  googleSans,
+  italiana,
+  playfair,
+  workSans,
+} from "@/lib/fonts";
 dayjs.extend(utc);
 dayjs.extend(tz);
 
@@ -55,7 +61,7 @@ const ArticleCard = ({ article }: Props) => {
             <a href={`/category/${category.fields.slug}`} key={category.sys.id}>
               <span
                 key={category.sys.id}
-                className="font-google border border-gray-300 bg-transparent px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-gray-600 transition-colors hover:border-zinc-900 hover:text-zinc-900 dark:border-zinc-600 dark:text-gray-400 dark:hover:border-zinc-300 dark:hover:text-zinc-200"
+                className="border border-gray-300 bg-transparent px-2 py-0.5 font-google text-[10px] font-bold uppercase tracking-widest text-gray-600 transition-colors hover:border-zinc-900 hover:text-zinc-900 dark:border-zinc-600 dark:text-gray-400 dark:hover:border-zinc-300 dark:hover:text-zinc-200"
               >
                 {category.fields.name}
               </span>
@@ -65,8 +71,8 @@ const ArticleCard = ({ article }: Props) => {
         <a
           href={"/" + article.fields.slug}
           className={cn(
-            "font-google max-w-none text-xl font-bold leading-tight text-gray-900 transition-colors duration-200 hover:text-blue-800 dark:text-white md:text-2xl",
-            workSans.className,
+            "max-w-none font-google text-xl font-bold leading-tight text-gray-900 transition-colors duration-200 hover:text-blue-800 dark:text-white md:text-2xl",
+            googleSans.className,
           )}
         >
           {article.fields.title}
@@ -93,7 +99,7 @@ const ArticleCard = ({ article }: Props) => {
                 <a
                   href={"/author/" + author.sys.id}
                   key={author.sys.id}
-                  className="font-google text-nowrap text-xs font-bold uppercase tracking-wider text-gray-900 underline decoration-gray-300 underline-offset-4 transition-all hover:decoration-gray-900 dark:text-gray-200 dark:decoration-gray-600 dark:hover:decoration-gray-300"
+                  className="text-nowrap font-google text-xs font-bold uppercase tracking-wider text-gray-900 underline decoration-gray-300 underline-offset-4 transition-all hover:decoration-gray-900 dark:text-gray-200 dark:decoration-gray-600 dark:hover:decoration-gray-300"
                 >
                   {author.fields.name}
                 </a>
@@ -102,7 +108,7 @@ const ArticleCard = ({ article }: Props) => {
             <span className="mx-2 text-xs font-bold text-gray-300 dark:text-gray-700">
               |
             </span>
-            <p className="font-google text-nowrap text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+            <p className="text-nowrap font-google text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
               {article?.fields?.date
                 ? dayjs(article?.fields?.date)
                     .tz("Asia/Kolkata")
