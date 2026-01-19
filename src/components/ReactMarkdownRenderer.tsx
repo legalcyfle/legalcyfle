@@ -42,10 +42,24 @@ const components: Components = {
     </ol>
   ),
   li: ({ children }) => <li className="ml-2">{children}</li>,
-  blockquote: ({ children }) => (
-    <blockquote className="border-saffron my-4 rounded-r-lg border-l-4 bg-stone-50 py-2 pl-4 pr-4 italic text-stone-600">
-      {children}
-    </blockquote>
+  blockquote: () => (
+    <div
+      className="my-2 flex justify-center overflow-hidden"
+      dangerouslySetInnerHTML={{
+        __html: `
+          <ins class="adsbygoogle"
+            style="display:block; text-align:center; min-width: 250px;"
+            data-ad-layout="in-article"
+            data-ad-format="fluid"
+            data-ad-client="ca-pub-5892936530350741"
+            data-ad-slot="5536160107">
+          </ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        `,
+      }}
+    />
   ),
   code: ({ children, ...rest }) => {
     const inline = "inline" in rest && rest.inline;
